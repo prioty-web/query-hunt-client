@@ -19,7 +19,7 @@ const Navbar = () => {
 //   }
     const  links = <>
     <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/'>My Applications</NavLink></li>
+    <li><NavLink to='/'>Product Details</NavLink></li>
     <li><NavLink to='/'>Home</NavLink></li>
        
     </>

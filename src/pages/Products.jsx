@@ -21,7 +21,7 @@ const Products = () => {
            <p className="font-medium text-gray-600 ">Share your experience on QUERY HUNT, where real reviews make a difference.</p>
             </div> 
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:w-11/12 mx-auto'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:w-11/12 mx-auto my-10'>
             {products.map((product) => (
     <ProductsCard
       key={product._id}

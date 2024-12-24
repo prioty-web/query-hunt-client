@@ -3,6 +3,7 @@ import {
   } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
+import ProductDetails from "../pages/ProductDetails";
 
 
 
@@ -15,8 +16,14 @@ import Home from "../pages/Home";
       children:[
         {
             path:'/',
-            element:<Home></Home>,
-        }]}])
+            element:<Home></Home>,            
+        },
+        {
+          path:'/products/:id',
+          element:<ProductDetails></ProductDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        },
+      ]}])
 
 
         export default router
