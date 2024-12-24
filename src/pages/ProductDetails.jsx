@@ -123,7 +123,8 @@ const ProductDetails = () => {
                                 <h3 className="text-lg font-bold">{rec.recommendation_title}</h3>
                                 <p className="text-gray-600">{rec.recommendation_reason}</p>
                                 <p className="text-sm text-gray-500">
-                                    Recommended by: {rec.recommenderName} on {new Date(rec.timestamp).toLocaleString()}
+                                    Recommended by: {rec.recommenderName} on {new Date(rec.timestamp).toLocaleString()} <br />
+                                    {rec.recommenderEmail}
                                 </p>
                             </div>
                         ))}

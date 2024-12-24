@@ -3,9 +3,11 @@
 
 import React, {useContext, useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from './Authprovider';
+import lottieReg from '../assets/Animation - 1735076750884.json'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Lottie from 'lottie-react';
+import { AuthContext } from './AuthProvider';
 
 const Register = () => {
 // showing error
@@ -82,9 +84,13 @@ const Register = () => {
 
 
     return (
-        <div className='md:w-5/12 mx-auto items-center justify-center my-[10vw]'>
-            <h1 className='text-3xl font-serif text-[#8b004aaf] text-center mb-4'>Register Now</h1>
-            <div className="card bg-base-100 w-full md:max-w-xl  shadow-2xl">
+        <div className='md:flex  space-x-14 items-center justify-center my-[10vw]'>
+            <div>
+                <Lottie animationData={lottieReg}></Lottie>
+            </div>
+           <div>
+           <h1 className='text-3xl font-serif text-slate-600 text-center mb-4'>Register Now</h1>
+            <div className="card bg-base-100  shadow-2xl">
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -118,7 +124,7 @@ const Register = () => {
   </label>
   
         <div className="form-control mt-6">
-          <button className="btn bg-[#8b004aaf] text-white">Register</button>
+          <button className="btn bg-slate-600 text-white">Register</button>
         </div>
       </form>
       {
@@ -127,8 +133,9 @@ const Register = () => {
       {
         success && <p className='text-green-500 text-xs p-4'>Successfully account Created!!!</p>
       }
-    <p className='text-sm p-5 text-gray-500'>Already have an account! <NavLink to='/login' className='text-[#8b004aaf] font-semibold'>Login</NavLink></p>
+    <p className='text-sm p-5 text-gray-500'>Already have an account! <NavLink to='/login' className='text-slate-900 font-semibold'>Login</NavLink></p>
     </div>
+           </div>
         </div>
     );
 };

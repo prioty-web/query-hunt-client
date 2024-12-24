@@ -6,6 +6,8 @@ import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from './AuthProvider';
+import loginLottie from '../assets/Animation - 1735076608592.json'
+import Lottie from 'lottie-react';
 
 
 
@@ -76,9 +78,15 @@ const Login = () => {
 
 
     return (
-        <div className='md:w-5/12 mx-auto items-center justify-center my-[10vw]'>
-            <h1 className='text-3xl font-serif text-[#8b004aaf] text-center mb-4'>Login Now</h1>
-            <div className="card bg-base-100 w-full md:max-w-xl  shadow-2xl">
+        <div className='md:flex space-x-14 mx-auto items-center justify-center my-[10vw]'>
+            <div>
+            <Lottie animationData={loginLottie}></Lottie>
+            </div>
+            <div>
+            <h1 className='text-3xl font-serif text-slate-500 text-center mb-4'>Login Now</h1>
+            
+
+            <div className="card bg-base-100   shadow-2xl">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -96,7 +104,7 @@ const Login = () => {
           
         </div>
         <div className="form-control mt-6">
-          <button onSubmit={handleLogin} className="btn bg-[#8b004b] hover:bg-[#8b004aaf] text-white">Login</button>
+          <button onSubmit={handleLogin} className="btn bg-slate-500 hover:bg-slate-800  text-white">Login</button>
         </div>
       </form>
        <button onClick={handleForgetPass} className='text-sm' >Forgot Password?</button>
@@ -108,8 +116,9 @@ const Login = () => {
                         <FaGoogle /> Sign in with Google
                     </button>
                 </div>
-    <p className='text-sm p-5 text-gray-500'>Have not Register yet!  <NavLink to='/register' className='text-[#8b004aaf] font-semibold'>Register Now</NavLink></p>
+    <p className='text-sm p-5 text-gray-500'>Have not Register yet!  <NavLink to='/register' className='text-slate-700 font-semibold'>Register Now</NavLink></p>
     </div>
+            </div>
         </div>
     );
 };
