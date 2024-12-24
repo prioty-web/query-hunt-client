@@ -5,22 +5,22 @@ const slides = [
   {
     id: 1,
     image: "https://img.freepik.com/free-vector/product-review-abstract-concept-illustration_335657-3752.jpg",
-    title: "Welcome to Our Service",
-    description: "Experience the best quality and service for all your needs.",
+    title: "Looking to grow your business?",
+    description: "Strengthen your reputation with real reviews on Query Hunt..",
     buttonText: "Get Started",
   },
   {
     id: 2,
     image: "https://img.freepik.com/free-vector/landing-page-people-with-golden-stars-positive-review_88138-1192.jpg",
-    title: "Innovative Solutions",
-    description: "Bringing technology closer to your everyday life.",
+    title: "We’re Query Hunt",
+    description: "We’re a review platform that’s open to everyone. Our vision is to become a universal symbol of trust.",
     buttonText: "Learn More",
   },
   {
     id: 3,
     image: "https://img.freepik.com/free-vector/reviews-concept-landing-page_52683-22145.jpg",
     title: "Discover New Equipments",
-    description: "Explore opportunities and make the best of them.",
+    description: "Explore products and make the best of them.",
     buttonText: "Explore Now",
   },
 ];
