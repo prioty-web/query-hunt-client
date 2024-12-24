@@ -1,22 +1,25 @@
 
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/AuthProvider";
+import { useContext } from "react";
 
 
 
 
 const Navbar = () => {
-//   const {user, signOutUser} = useContext(AuthContext);
+  const { user,setUser, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  // signout handle
-//   const handleSignOut = () =>{
-//     signOutUser()
-//     .then(()=>{
-//       console.log('signout success');
-//     })
-//     .catch(error =>{
-//       console.log(error, 'failed');
-//     })
-//   }
+  const handleLogout = () => {
+    signOutUser()
+      .then(() => {
+        setUser(null)
+        navigate('/'); 
+      })
+      .catch((error) => {
+        // console.error(error))
+      });
+  };
     const  links = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/'>Product Details</NavLink></li>
@@ -24,7 +27,7 @@ const Navbar = () => {
        
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 md:w-11/12 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,11 +63,29 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     
-      
-       <><button  className="btn">Sign Out</button></> 
-       
-      <><Link to='/register'>Register</Link>
-    <Link to='/signin'><button className="btn">Sign In</button></Link></>
+  {!user ? (
+          <NavLink to="login">
+            <button className="btn  bg-slate-500 hover:bg-slate-800  text-white font-semibold rounded-lg shadow-lg hover:bg-gradient-to-l hover:scale-105 hover:shadow-xl transition duration-300">
+              Login
+            </button>
+          </NavLink>
+        ) : (
+          <>
+            <button
+              onClick={handleLogout}
+              className="btn  bg-slate-500 hover:bg-slate-800 mr-4 text-white font-semibold rounded-lg shadow-lg hover:bg-gradient-to-l hover:scale-105 hover:shadow-xl transition duration-300">
+              Logout
+            </button>
+            <div className="w-10 rounded-full relative group ">
+              <div><img className=' rounded-full' src={user?.photoURL
+                } /></div> 
+              <div className="absolute right-0  bg-gray-800 text-white text-xs rounded-md p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {user?.displayName || "No User Name"}
+                    </div>
+              
+            </div>
+          </>
+        )}
     
     
 

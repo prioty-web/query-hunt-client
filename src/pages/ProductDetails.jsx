@@ -1,9 +1,14 @@
 import { useLoaderData } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../auth/AuthProvider";
+
+
 
 const ProductDetails = () => {
     const product = useLoaderData();
+
+    const { user } = useContext(AuthContext)
     const { _id, title, product_name, product_image, recommendation_reason, recommendation_count } = product;
 
     const [recommendations, setRecommendations] = useState([]);
@@ -23,17 +28,17 @@ const ProductDetails = () => {
 
     // Handle form submission
     const handleSubmit = (e) => {
+        
         e.preventDefault();
-        const recommender_email = "user@example.com"; // Replace with current user's email
-        const recommender_name = "John Doe"; // Replace with current user's name
-
+        const recommender_email = user?.email; 
+        const recommender_name = user?.displayName; 
         const recommendationData = {
             ...formData,
             queryId: _id,
             queryTitle: title,
             productName: product_name,
-            userEmail: "user@example.com", // Replace with query creator's email
-            userName: "Query Creator", // Replace with query creator's name
+            userEmail: user?.email, 
+            userName: user?.displayName, 
             recommenderEmail: recommender_email,
             recommenderName: recommender_name,
             timestamp: new Date().toISOString(),

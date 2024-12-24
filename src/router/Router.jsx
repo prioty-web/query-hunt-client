@@ -4,6 +4,8 @@ import {
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import ProductDetails from "../pages/ProductDetails";
+import Login from "../auth/Login";
+import Register from "../auth/Register";
 
 
 
@@ -22,6 +24,17 @@ import ProductDetails from "../pages/ProductDetails";
           path:'/products/:id',
           element:<ProductDetails></ProductDetails>,
           loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        },
+        {
+          path:'login',
+          element:<Login></Login>,
+          loader: () => (document.title = "login"),
+        },
+        {
+          path:'register',
+          element:<Register></Register>,
+          loader: () => (document.title = "register"),
+      
         },
       ]}])
 
