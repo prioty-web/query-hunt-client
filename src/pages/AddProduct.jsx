@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../auth/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
     const currentDateTime = new Date(Date.now());
     const formattedDateTime = `${currentDateTime.toLocaleDateString()} ${currentDateTime.toLocaleTimeString()}`;
 
@@ -62,6 +64,8 @@ const AddProducts = () => {
                         confirmButtonText: 'Ok'
                     });
                     e.target.reset();
+                    navigate('/all-products');
+                    
                 }
             })
 

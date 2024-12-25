@@ -11,6 +11,8 @@ import Products from "../pages/Products";
 import MyQueries from "../pages/MyQueries";
 import MyQuery from "../pages/MyQuery";
 import UpdateQuery from "../pages/UpdateQuery";
+import PrivateRoutes from "../auth/Privateroutes";
+
 
 
 
@@ -27,12 +29,12 @@ import UpdateQuery from "../pages/UpdateQuery";
         },
         {
           path:'/products/:id',
-          element:<ProductDetails></ProductDetails>,
+          element:<PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
           loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
         },
         {
           path:'/add-products',
-          element:<AddProducts></AddProducts>,
+          element:<PrivateRoutes><AddProducts></AddProducts></PrivateRoutes>,
           loader: () => (document.title = "add-product"),
         },
         {
@@ -42,17 +44,17 @@ import UpdateQuery from "../pages/UpdateQuery";
         },
         {
           path:'/my-quries',
-          element:<MyQueries></MyQueries>,
+          element:<PrivateRoutes><MyQueries></MyQueries></PrivateRoutes>,
           loader: () => (document.title = "MyQueries"),
         },
         {
           path:'/query-details/:id',
-          element:<MyQuery></MyQuery>,
+          element:<PrivateRoutes><MyQuery></MyQuery></PrivateRoutes> ,
           loader: ({params}) => fetch(`http://localhost:5000/my-quries/${params.id}`),
         },
         {
           path:'/update-query/:id',
-          element:<UpdateQuery></UpdateQuery>,
+          element:<PrivateRoutes><UpdateQuery></UpdateQuery></PrivateRoutes> ,
           loader: ({params}) => fetch(`http://localhost:5000/my-quries/${params.id}`),
         },
         {
