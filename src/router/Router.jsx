@@ -8,6 +8,9 @@ import Login from "../auth/Login";
 import Register from "../auth/Register";
 import AddProducts from "../pages/AddProduct";
 import Products from "../pages/Products";
+import MyQueries from "../pages/MyQueries";
+import MyQuery from "../pages/MyQuery";
+import UpdateQuery from "../pages/UpdateQuery";
 
 
 
@@ -36,6 +39,21 @@ import Products from "../pages/Products";
           path:'/all-products',
           element:<Products></Products>,
           loader: () => (document.title = "add-product"),
+        },
+        {
+          path:'/my-quries',
+          element:<MyQueries></MyQueries>,
+          loader: () => (document.title = "MyQueries"),
+        },
+        {
+          path:'/query-details/:id',
+          element:<MyQuery></MyQuery>,
+          loader: ({params}) => fetch(`http://localhost:5000/my-quries/${params.id}`),
+        },
+        {
+          path:'/update-query/:id',
+          element:<UpdateQuery></UpdateQuery>,
+          loader: ({params}) => fetch(`http://localhost:5000/my-quries/${params.id}`),
         },
         {
           path:'login',

@@ -2,17 +2,20 @@
 
 import { Link } from "react-router-dom";
 
-const ProductsCard = ({
-  _id,
-  title,
-  product_name,
-  product_image,
-  recommendation_reason,
-  recommendation_count,
-  timestamp,
-  provider_name,
-  provider_image,
-}) => {
+const ProductsCard = ({product}) => {
+  const {_id,
+    title,
+    product_name,
+    product_image,
+    recommendation_reason,
+    timestamp,
+    provider_email,
+    provider_name,
+    provider_image,
+    recommand_count,
+    product_brand,
+    product_boycot,
+  } = product;
   return (
     <div className="flex flex-col items-center p-5 lg:m-3 bg-gradient-to-r from-slate-300 to-slate-500 text-white shadow-xl rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out">
       {/* Product Image */}
@@ -21,23 +24,21 @@ const ProductsCard = ({
         alt={`Image of ${product_name}`}
         className="w-32 h-32 object-cover rounded-full border-4 border-white mb-4"
       />
-      
+
       {/* Title and Name */}
       <h2 className="text-2xl font-serif mb-2">{title}</h2>
       <p className="text-lg font-mono">{product_name}</p>
 
       {/* Recommendation Reason */}
       <p className="text-sm italic mb-3">{recommendation_reason}</p>
-      
+
       {/* Recommendation Count */}
       <p className="text-sm bg-white text-gray-800 px-3 py-1 rounded-full font-medium mb-4">
-        Recommendations: {recommendation_count}
+        Recommendations: {recommand_count}
       </p>
-      
+
       {/* Timestamp */}
-      <p className="text-sm mb-4">
-        {new Date(timestamp).toLocaleString()}
-      </p>
+      <p className="text-sm mb-4">{new Date(timestamp).toLocaleString()}</p>
 
       {/* Provider Information */}
       <div className="flex items-center gap-3">
