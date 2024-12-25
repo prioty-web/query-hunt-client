@@ -1,12 +1,12 @@
 import Banner from "./Banner";
-import Products from "./Products";
+import RecentQueries from "./RecentQueries";
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Products></Products>
+            <RecentQueries></RecentQueries>
         </div>
     );
 };

@@ -39,7 +39,8 @@ const AuthProvider = ({children}) => {
     const [user,setUser]= useState(null)
     useEffect(()=>{
         const userData = onAuthStateChanged(auth, currentUser=>{
-            setUser(currentUser) ; 
+            setUser(currentUser) ;
+            console.log(currentUser) 
             setLoading(false)
         })
         return()=>{userData()}

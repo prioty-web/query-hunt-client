@@ -6,6 +6,8 @@ import Home from "../pages/Home";
 import ProductDetails from "../pages/ProductDetails";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
+import AddProducts from "../pages/AddProduct";
+import Products from "../pages/Products";
 
 
 
@@ -24,6 +26,16 @@ import Register from "../auth/Register";
           path:'/products/:id',
           element:<ProductDetails></ProductDetails>,
           loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        },
+        {
+          path:'/add-products',
+          element:<AddProducts></AddProducts>,
+          loader: () => (document.title = "add-product"),
+        },
+        {
+          path:'/all-products',
+          element:<Products></Products>,
+          loader: () => (document.title = "add-product"),
         },
         {
           path:'login',
