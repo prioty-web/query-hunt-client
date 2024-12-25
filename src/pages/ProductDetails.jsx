@@ -59,7 +59,7 @@ const ProductDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    setRecommendations([...recommendations, recommendationData]);
+                    window.location.reload();
                 }
             });
     };

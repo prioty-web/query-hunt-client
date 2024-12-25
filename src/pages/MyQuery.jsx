@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom'; // Import useLoaderData
+import { useLoaderData, useNavigate } from 'react-router-dom'; // Import useLoaderData and useNavigate
 
 const MyQuery = () => {
     // Fetch the product data using useLoaderData
@@ -19,6 +19,9 @@ const MyQuery = () => {
         product_brand,
         product_boycot,
     } = product;
+
+    // Initialize the navigate function from useNavigate
+    const navigate = useNavigate();
 
     return (
         <div className="p-5">
@@ -44,6 +47,14 @@ const MyQuery = () => {
             />
             <p className="mt-2 text-sm text-gray-500">{new Date(timestamp).toLocaleString()}</p>
             <p className="mt-2 text-sm text-gray-500">Provider Email: {provider_email}</p>
+
+            {/* Go Back Button */}
+            <button 
+                className="mt-4 px-4 py-2 bg-slate-500 text-white rounded-md hover:bg-slate-800"
+                onClick={() => navigate(-1)}  // Navigate back to the previous page
+            >
+                Go Back
+            </button>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyQueriesDetails = ({ product, handleDelete }) => {
+const MyQueriesDetails = ({ product }) => {
     const {
         _id,
         title,
@@ -17,6 +17,22 @@ const MyQueriesDetails = ({ product, handleDelete }) => {
         product_brand,
         product_boycot,
     } = product;
+
+    const handleDelete = (_id) => {
+        console.log('Deleting product/query with ID:', _id);
+    
+        
+        fetch(`http://localhost:5000/my-quries/${_id}`, {
+            method: 'DELETE',
+        })
+        .then(res => res.json()) 
+        .then(data => {
+            console.log('Delete response:', data);
+            window.location.reload();
+            
+        })
+    };
+    
 
     return (
         <div className="p-6 bg-white shadow-md rounded-lg flex flex-col items-center ">

@@ -27,7 +27,7 @@ const RecentQueries = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:w-11/12 mx-auto my-10">
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:w-11/12 mx-auto my-10">
             {products.map((product) => (
                     <ProductsCard
                         key={product._id}
