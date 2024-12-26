@@ -40,10 +40,10 @@ import PrivateRoutes from "../auth/Privateroutes";
         {
           path:'/all-products',
           element:<Products></Products>,
-          loader: () => (document.title = "add-product"),
+          loader: () => (document.title = "all-product"),
         },
         {
-          path:'/my-quries',
+          path:'/my-queries',
           element:<PrivateRoutes><MyQueries></MyQueries></PrivateRoutes>,
           loader: () => (document.title = "MyQueries"),
         },

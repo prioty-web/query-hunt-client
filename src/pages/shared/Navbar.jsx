@@ -20,13 +20,19 @@ const Navbar = () => {
         // console.error(error))
       });
   };
-    const  links = <>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/add-products'>ADD Product</NavLink></li>
-    <li><NavLink to='/all-products'>All Products</NavLink></li>
-    <li><NavLink to='/my-quries'>MyQueries</NavLink></li>
-       
+  const links = (
+    <>
+      <li><NavLink to='/'>Home</NavLink></li>
+      <li><NavLink to='/all-products'>Queries</NavLink></li>
+      {user?.email && (
+        <>
+          <li><NavLink to='/add-products'>Add Queries</NavLink></li>
+          <li><NavLink to='/my-queries'>My Queries</NavLink></li>
+        </>
+      )}
     </>
+  );
+  
     return (
         <div className="navbar bg-base-100 md:w-11/12 mx-auto">
   <div className="navbar-start">

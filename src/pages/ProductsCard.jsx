@@ -2,8 +2,9 @@
 
 import { Link } from "react-router-dom";
 
-const ProductsCard = ({product}) => {
-  const {_id,
+const ProductsCard = ({ product }) => {
+  const {
+    _id,
     title,
     product_name,
     product_image,
@@ -16,6 +17,7 @@ const ProductsCard = ({product}) => {
     product_brand,
     product_boycot,
   } = product;
+  console.log(product)
   return (
     <div className="flex flex-col items-center p-5 lg:m-3 bg-gradient-to-r from-slate-300 to-slate-500 text-white shadow-xl rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out">
       {/* Product Image */}
@@ -24,18 +26,24 @@ const ProductsCard = ({product}) => {
         alt={`Image of ${product_name}`}
         className="w-32 h-32 object-cover rounded-full border-4 border-white mb-4"
       />
-
+      {/* <p className="text-lg font-mono">Recomendation: {title}</p> */}
       {/* Title and Name */}
-      <h2 className="text-2xl font-serif mb-2">{title}</h2>
-      <p className="text-lg font-mono">{product_name}</p>
-
-      {/* Recommendation Reason */}
-      <p className="text-sm italic mb-3">{recommendation_reason}</p>
-
+      <h2 className="text-2xl font-serif mb-2">{product_name}</h2>
+      <p className="text-lg font-mono">Brand: {product_brand}</p>
+      {/* Details */}
+      {/* <p className="text-sm italic mb-3"><small className="text-sm  font-bold">Details:</small> {recommendation_reason}</p> */}
       {/* Recommendation Count */}
       <p className="text-sm bg-white text-gray-800 px-3 py-1 rounded-full font-medium mb-4">
         Recommendations: {recommand_count}
       </p>
+
+
+
+
+      {/* Boycot Reason */}
+      {/* <p className="text-sm italic mb-3"><small className="text-xl font-bold">Boycot Reason:</small> {product_boycot}</p> */}
+
+
 
       {/* Timestamp */}
       <p className="text-sm mb-4">{new Date(timestamp).toLocaleString()}</p>

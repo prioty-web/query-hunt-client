@@ -20,19 +20,19 @@ const MyQueriesDetails = ({ product }) => {
 
     const handleDelete = (_id) => {
         console.log('Deleting product/query with ID:', _id);
-    
-        
+
+
         fetch(`http://localhost:5000/my-quries/${_id}`, {
             method: 'DELETE',
         })
-        .then(res => res.json()) 
-        .then(data => {
-            console.log('Delete response:', data);
-            window.location.reload();
-            
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Delete response:', data);
+                window.location.reload();
+
+            })
     };
-    
+
 
     return (
         <div className="p-6 bg-white shadow-md rounded-lg flex flex-col items-center ">
@@ -44,10 +44,13 @@ const MyQueriesDetails = ({ product }) => {
             />
 
             {/* Product Info */}
-            <h2 className="text-xl font-semibold mb-2">{title}</h2>
-            <p className="text-gray-600">{product_name}</p>
+            <h2 className="text-xl font-semibold mb-2">{product_name}</h2>
+            <p className="text-gray-600">{product_brand}</p>
             <p className="text-sm text-gray-500 mb-4">
                 Added on: {new Date(timestamp).toLocaleString()}
+            </p>
+            <p className="text-sm bg-white text-gray-800 px-3 py-1 rounded-full font-medium mb-4">
+                Recommendations: {recommand_count}
             </p>
 
             {/* Action Buttons */}
