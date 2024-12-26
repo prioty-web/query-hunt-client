@@ -9,7 +9,7 @@ const Products = () => {
 
     // Fetch products on mount
     useEffect(() => {
-        axios.get('http://localhost:5000/products', { withCredentials: true })
+        axios.get('https://query-hunt-server.vercel.app/products', { withCredentials: true })
             .then(res => {
                 setProducts(res.data);
             })

@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
 
                 const user = { email: currentUser?.email };
 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://query-hunt-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
 
@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
                     setLoading(false)
             }
             else {
-                axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+                axios.post('https://query-hunt-server.vercel.app/logout', {}, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
 

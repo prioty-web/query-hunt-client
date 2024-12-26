@@ -47,7 +47,7 @@ const AddProducts = () => {
         console.log(newProduct)
 
         // send data to the server and database
-        axios.post('http://localhost:5000/products', newProduct, { withCredentials: true })
+        axios.post('https://query-hunt-server.vercel.app/products', newProduct, { withCredentials: true })
             .then(response => {
                 const data = response.data;
                 if (data.insertedId) {

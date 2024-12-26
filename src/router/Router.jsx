@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         path: '/products/:id',
         element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
         loader: ({ params }) => 
-          axios.get(`http://localhost:5000/products/${params.id}`, { withCredentials: true })
+          axios.get(`https://query-hunt-server.vercel.app/products/${params.id}`, { withCredentials: true })
             .then(res => res.data),
       },
       {
@@ -52,14 +52,14 @@ const router = createBrowserRouter([
         path: '/query-details/:id',
         element: <PrivateRoutes><MyQuery></MyQuery></PrivateRoutes>,
         loader: ({ params }) => 
-          axios.get(`http://localhost:5000/my-quries/${params.id}`, { withCredentials: true })
+          axios.get(`https://query-hunt-server.vercel.app/my-quries/${params.id}`, { withCredentials: true })
             .then(res => res.data),
       },
       {
         path: '/update-query/:id',
         element: <PrivateRoutes><UpdateQuery></UpdateQuery></PrivateRoutes>,
         loader: ({ params }) => 
-          axios.get(`http://localhost:5000/my-quries/${params.id}`, { withCredentials: true })
+          axios.get(`https://query-hunt-server.vercel.app/my-quries/${params.id}`, { withCredentials: true })
             .then(res => res.data),
       },
       {
@@ -71,12 +71,12 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><RecomandationForMe></RecomandationForMe></PrivateRoutes>,
       },
       {
-        path: 'login',
+        path: '/login',
         element: <Login></Login>,
         loader: () => (document.title = "login"),
       },
       {
-        path: 'register',
+        path: '/register',
         element: <Register></Register>,
         loader: () => (document.title = "register"),
       },

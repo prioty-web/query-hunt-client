@@ -61,7 +61,7 @@ const Navbar = () => {
     </div>
    <div className="flex"> 
    
-   <img className="w-11" src="/public/icons8-reviewing-68.png"  />
+   <img className="w-11" src="/icons8-reviewing-68.png"  />
    <a className="btn btn-ghost text-xl">Query Hunt</a>
    </div>
   </div>

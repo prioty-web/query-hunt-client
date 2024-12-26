@@ -6,7 +6,7 @@ const RecentQueries = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/products', { withCredentials: true })
+        axios.get('https://query-hunt-server.vercel.app/products', { withCredentials: true })
             .then((res) => {
                 const sortedProducts = res.data
                     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))

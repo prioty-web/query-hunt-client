@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../auth/AuthProvider";
 
 const ProductsCard = ({ product }) => {
+  const {user} =useContext(AuthContext);
   const {
     _id,
     title,
@@ -59,7 +62,7 @@ const ProductsCard = ({ product }) => {
       </div>
 
       {/* Recommend Button */}
-      <Link to={`/products/${_id}`}>
+      <Link to={user?.email ? `/products/${_id}` : '/login'}>
         <button className="bg-yellow-500 hover:bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded-full shadow-md hover:shadow-lg hover:animate-bounce transition-all mt-4">
           Recommend
         </button>

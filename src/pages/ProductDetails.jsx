@@ -41,7 +41,7 @@ const ProductDetails = () => {
         };
         console.log(recommendationData)
 
-        axios.post('http://localhost:5000/recommendation', recommendationData, { withCredentials: true })
+        axios.post('https://query-hunt-server.vercel.app/recommendation', recommendationData, { withCredentials: true })
         .then((response) => {
             console.log(response.data);
             window.location.reload();
@@ -53,7 +53,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         // Fetch recommendations based on the id with credentials
-        axios.get(`http://localhost:5000/recommendation?id=${_id}`, { withCredentials: true })
+        axios.get(`https://query-hunt-server.vercel.app/recommendation?id=${_id}`, { withCredentials: true })
             .then((response) => {
                 setReccomends(response.data);
             })

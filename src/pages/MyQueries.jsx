@@ -9,7 +9,7 @@ const MyQueries = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/my-quries?email=${user?.email}`, { withCredentials: true })
+        axios.get(`https://query-hunt-server.vercel.app/my-quries?email=${user?.email}`, { withCredentials: true })
             .then(response => {
                 const data = response.data;
                 // Sort the data based on timestamp

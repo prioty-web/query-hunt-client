@@ -23,7 +23,7 @@ const MyQueriesDetails = ({ product }) => {
         console.log('Deleting product/query with ID:', _id);
 
 
-        axios.delete(`http://localhost:5000/my-quries/${_id}`, { withCredentials: true })
+        axios.delete(`https://query-hunt-server.vercel.app/my-quries/${_id}`, { withCredentials: true })
         .then(response => {
             console.log("Delete response:", response.data);
             window.location.reload(); // Reloads the page after deletion

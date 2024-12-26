@@ -9,7 +9,7 @@ const RecomandationForMe = () => {
   useEffect(() => {
     if (user?.email) {
       // Fetch recommendations based on the user's email
-      axios.get(`http://localhost:5000/recommendation?usermail=${user?.email}`, { withCredentials: true })
+      axios.get(`https://query-hunt-server.vercel.app/recommendation?usermail=${user?.email}`, { withCredentials: true })
                 .then((res) => {
                     setRecommendations(res.data);
                 })

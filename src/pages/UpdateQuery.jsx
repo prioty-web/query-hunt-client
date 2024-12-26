@@ -50,7 +50,7 @@ const UpdateQuery = () => {
         console.log(updateProduct)
 
         // send data to the server and database
-        axios.put(`http://localhost:5000/my-quries/${product._id}`, updateProduct, { 
+        axios.put(`https://query-hunt-server.vercel.app/my-quries/${product._id}`, updateProduct, { 
             headers: { 'Content-Type': 'application/json' }, 
             withCredentials: true 
         })

@@ -9,7 +9,7 @@ const MyRecommendation = () => {
 
     useEffect(() => {
         // Fetch recommendations based on the user's email
-        axios.get(`http://localhost:5000/recommendation?email=${user?.email}`, { withCredentials: true })
+        axios.get(`https://query-hunt-server.vercel.app/recommendation?email=${user?.email}`, { withCredentials: true })
             .then((response) => {
                 setRecommendations(response.data);
             })
@@ -19,7 +19,7 @@ const MyRecommendation = () => {
     }, [user?.email]);
 
     const handleDelete = (recommendationId, queryId) => {
-        axios.delete(`http://localhost:5000/recommendation/${recommendationId}?queryId=${queryId}`, { withCredentials: true })
+        axios.delete(`https://query-hunt-server.vercel.app/recommendation/${recommendationId}?queryId=${queryId}`, { withCredentials: true })
             .then((response) => {
                 if (response.data.success) {
                     // Update state by removing the deleted recommendation
