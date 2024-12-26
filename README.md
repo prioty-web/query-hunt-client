@@ -5,7 +5,7 @@
 The purpose of this application is to manage product data efficiently. Users can add, view, update, and delete products, as well as interact with various features such as product reviews and recommendations.
 
 ## Live URL
-[Live Demo](http://localhost:3000) 
+[Live Demo](https://query-hunt.web.app/) 
 
 ## Key Features
 - Add new products with name, price, and description.
@@ -34,7 +34,7 @@ The purpose of this application is to manage product data efficiently. Users can
 
 ## How to Run the Project
 
-1. Open the application in your browser at `http://localhost:3000`
+1. Open the application in your browser at `https://query-hunt.web.app/`
 
 ## API Endpoints (Backend)
 - **GET /products**: Fetch all products.
