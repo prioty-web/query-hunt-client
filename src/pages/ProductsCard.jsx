@@ -17,7 +17,7 @@ const ProductsCard = ({ product }) => {
     product_brand,
     product_boycot,
   } = product;
-  console.log(product)
+  // console.log(product)
   return (
     <div className="flex flex-col items-center p-5 lg:m-3 bg-gradient-to-r from-slate-300 to-slate-500 text-white shadow-xl rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out">
       {/* Product Image */}

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const UpdateQuery = () => {
     const navigate = useNavigate();
@@ -33,6 +34,7 @@ const UpdateQuery = () => {
 
 
         const updateProduct = {
+            
             title,
             product_name,
             product_image,
@@ -48,28 +50,23 @@ const UpdateQuery = () => {
         console.log(updateProduct)
 
         // send data to the server and database
-        fetch(`http://localhost:5000/my-quries/${product._id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateProduct)
+        axios.put(`http://localhost:5000/my-quries/${product._id}`, updateProduct, { 
+            headers: { 'Content-Type': 'application/json' }, 
+            withCredentials: true 
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    console.log(data);
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Product update successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                    });
-                    navigate('/my-quries')
-
-                    e.target.reset();
-                }
-            })
+        .then((res) => {
+            if (res.data.acknowledged) {
+                console.log(res.data);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Product updated successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                });
+                navigate('/my-quries');
+                e.target.reset();
+            }
+        })
 
     }
     return (

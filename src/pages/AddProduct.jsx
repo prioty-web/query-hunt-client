@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 
@@ -23,7 +24,7 @@ const AddProducts = () => {
         const provider_email = user.email;
         const provider_name = user.displayName;
         const provider_image = user.photoURL;
-        const recommand_count =0
+        const recommand_count = 0
         const product_brand = e.target.product_brand.value;
         const product_boycot = e.target.product_boycot.value;
 
@@ -46,28 +47,29 @@ const AddProducts = () => {
         console.log(newProduct)
 
         // send data to the server and database
-        fetch('http://localhost:5000/products', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newProduct)
-        })
-            .then(res => res.json())
-            .then(data => {
+        axios.post('http://localhost:5000/products', newProduct, { withCredentials: true })
+            .then(response => {
+                const data = response.data;
                 if (data.insertedId) {
-                    // console.log(data);
                     Swal.fire({
                         title: 'Success!',
                         text: 'Product added successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     });
-                    e.target.reset();
-                    navigate('/all-products');
-                    
+                    e.target.reset(); // Reset the form after submission
+                    navigate('/all-products'); // Navigate to the product listing page
                 }
             })
+            .catch(error => {
+                console.error("There was an error adding the product:", error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to add product',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again',
+                });
+            });
 
     }
 
@@ -118,18 +120,18 @@ const AddProducts = () => {
                             </label>
                             <input type="text" name='title' placeholder="product title" className="input input-bordered" required />
                         </div>
-                        
+
                     </div>
 
 
-                    
+
                     {/* form third row */}
 
                     <div className="form-control flex-1">
                         <label className="label">
                             <span className="label-text">Details</span>
                         </label>
-                        <input type="text" name='recommendation_reason' placeholder="" className="input input-bordered"required />
+                        <input type="text" name='recommendation_reason' placeholder="" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control">

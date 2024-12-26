@@ -27,7 +27,7 @@ const Navbar = () => {
       {user?.email && (
         <>
           <li><NavLink to='/add-products'>Add Queries</NavLink></li>
-          <li><NavLink to='/my-queries'>My Queries</NavLink></li>
+          <li><NavLink to='/my-quries'>My Queries</NavLink></li>
           <li><NavLink to='/my-recommendation'>My Recommendation </NavLink></li>
           <li><NavLink to='/recommendation-for-me'>Recommendation For me</NavLink></li>
         </>

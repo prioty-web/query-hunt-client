@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthProvider';
 import { useContext } from 'react';
+import axios from 'axios';
 
 const ProductDetails = () => {
     const loadedProduct = useLoaderData();
     const [product] = useState(loadedProduct);
-    const [reccomends , setReccomends] = useState([])
+    const [reccomends , setReccomends] = useState(loadedProduct)
     const { user } = useContext(AuthContext);
     const {
         _id,
@@ -40,23 +41,26 @@ const ProductDetails = () => {
         };
         console.log(recommendationData)
 
-        fetch('http://localhost:5000/recommendation', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(recommendationData),
+        axios.post('http://localhost:5000/recommendation', recommendationData, { withCredentials: true })
+        .then((response) => {
+            console.log(response.data);
+            window.location.reload();
         })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                window.location.reload();
-            });
+        .catch((error) => {
+            console.error('Error adding recommendation:', error);
+        });
     };
 
-    useEffect(()=>{
-        fetch(`http://localhost:5000/recommendation?id=${_id}`)
-        .then(res=>res.json())
-        .then(data=> setReccomends(data))
-    },[_id])
+    useEffect(() => {
+        // Fetch recommendations based on the id with credentials
+        axios.get(`http://localhost:5000/recommendation?id=${_id}`, { withCredentials: true })
+            .then((response) => {
+                setReccomends(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching recommendations:', error);
+            });
+    }, [_id]);
 
 
 console.log(reccomends)

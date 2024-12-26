@@ -2,24 +2,28 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../auth/AuthProvider';
 import MyQueriesDetails from './MyQueriesDetails';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const MyQueries = () => {
     const [products, setProducts] = useState([]);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-quries?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
+        axios.get(`http://localhost:5000/my-quries?email=${user?.email}`, { withCredentials: true })
+            .then(response => {
+                const data = response.data;
                 // Sort the data based on timestamp
                 const sortedData = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 setProducts(sortedData);
+            })
+            .catch(error => {
+                console.error("There was an error fetching the data:", error);
             });
     }, [user?.email]);
 
     return (
         <div className=''>
-            <div className="bg-blue-500 text-white py-10 px-5 text-center rounded-lg shadow-lg">
+            <div className="bg-gradient-to-r from-slate-300 to-slate-500 text-white py-10 px-5 text-center rounded-lg shadow-lg">
                 <h1 className="text-4xl font-bold mb-5">Welcome to My Queries</h1>
                 <p className="text-lg mb-8">Manage and track your queries effortlessly.</p>
                 <Link

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductsCard from "./ProductsCard";
+import axios from "axios";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -8,10 +9,12 @@ const Products = () => {
 
     // Fetch products on mount
     useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
+        axios.get('http://localhost:5000/products', { withCredentials: true })
+            .then(res => {
+                setProducts(res.data);
+            })
+            .catch(err => {
+                console.error('Error fetching products:', err);
             });
     }, []);
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -22,15 +23,11 @@ const MyQueriesDetails = ({ product }) => {
         console.log('Deleting product/query with ID:', _id);
 
 
-        fetch(`http://localhost:5000/my-quries/${_id}`, {
-            method: 'DELETE',
+        axios.delete(`http://localhost:5000/my-quries/${_id}`, { withCredentials: true })
+        .then(response => {
+            console.log("Delete response:", response.data);
+            window.location.reload(); // Reloads the page after deletion
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log('Delete response:', data);
-                window.location.reload();
-
-            })
     };
 
 

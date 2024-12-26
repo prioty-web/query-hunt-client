@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import ProductsCard from './ProductsCard';
+import axios from 'axios';
 
 const RecentQueries = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then((res) => res.json())
-            .then((data) => {
-                // Sort products by timestamp in descending order and get the most recent 6
-                const sortedProducts = data
+        axios.get('http://localhost:5000/products', { withCredentials: true })
+            .then((res) => {
+                const sortedProducts = res.data
                     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-                    .slice(0, 6);
+                    .slice(0, 6);  // Get the most recent 6 products
                 setProducts(sortedProducts);
+            })
+            .catch((err) => {
+                console.error('Error fetching products:', err);
             });
     }, []);
 
