@@ -13,6 +13,7 @@ import MyQuery from "../pages/MyQuery";
 import UpdateQuery from "../pages/UpdateQuery";
 import PrivateRoutes from "../auth/Privateroutes";
 import MyRecommendation from "../pages/MyRecommendation";
+import RecomandationForMe from "../pages/RecomandationForMe";
 
 
 
@@ -62,6 +63,10 @@ import MyRecommendation from "../pages/MyRecommendation";
           path:'/my-recommendation',
           element:<PrivateRoutes><MyRecommendation></MyRecommendation></PrivateRoutes>,
 
+        },
+        {
+          path:'/recommendation-for-me',
+          element:<PrivateRoutes><RecomandationForMe></RecomandationForMe></PrivateRoutes>
         },
         {
           path:'login',
