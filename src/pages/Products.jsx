@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [searchQuery, setSearchQuery] = useState(''); // State for search input
+    const [searchQuery, setSearchQuery] = useState(""); // State for search input
     const [gridColumns, setGridColumns] = useState(3); // State for controlling grid layout (1, 2, 3 columns)
 
     // Fetch products on mount
@@ -28,6 +28,9 @@ const Products = () => {
         setGridColumns(columns);
     };
 
+    // Determine grid class dynamically
+    const gridClass = gridColumns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3";
+
     return (
         <div>
             <div className="text-center my-10">
@@ -47,8 +50,7 @@ const Products = () => {
             </div>
 
             {/* Grid layout toggle buttons */}
-            <div className=" hidden lg:flex justify-center space-x-4 mb-6">
-                
+            <div className="hidden lg:flex justify-center space-x-4 mb-6">
                 <button
                     onClick={() => handleGridLayout(2)} // 2 columns
                     className={`p-3 border ${gridColumns === 2 ? 'bg-blue-500 text-white' : 'bg-white'}`}
@@ -64,7 +66,7 @@ const Products = () => {
             </div>
 
             {/* Display filtered products */}
-            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${gridColumns} gap-4 lg:w-11/12 mx-auto my-10`}>
+            <div className={`grid sm:grid-cols-1 ${gridClass} gap-4 lg:w-11/12 mx-auto my-10`}>
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
                         <ProductsCard
