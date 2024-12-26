@@ -28,6 +28,7 @@ const Navbar = () => {
         <>
           <li><NavLink to='/add-products'>Add Queries</NavLink></li>
           <li><NavLink to='/my-queries'>My Queries</NavLink></li>
+          <li><NavLink to='/my-recommendation'>My Recommendation </NavLink></li>
         </>
       )}
     </>

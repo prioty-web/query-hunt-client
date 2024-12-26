@@ -12,6 +12,7 @@ import MyQueries from "../pages/MyQueries";
 import MyQuery from "../pages/MyQuery";
 import UpdateQuery from "../pages/UpdateQuery";
 import PrivateRoutes from "../auth/Privateroutes";
+import MyRecommendation from "../pages/MyRecommendation";
 
 
 
@@ -56,6 +57,11 @@ import PrivateRoutes from "../auth/Privateroutes";
           path:'/update-query/:id',
           element:<PrivateRoutes><UpdateQuery></UpdateQuery></PrivateRoutes> ,
           loader: ({params}) => fetch(`http://localhost:5000/my-quries/${params.id}`),
+        },
+        {
+          path:'/my-recommendation',
+          element:<PrivateRoutes><MyRecommendation></MyRecommendation></PrivateRoutes>,
+
         },
         {
           path:'login',
