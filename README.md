@@ -47,5 +47,5 @@ Feel free to submit issues or feature requests. Contributions are welcome!
 
 
 ## Git Links
-- **Client Side**: https://github.com/programming-hero-web-course2/b10a11-client-side-prioty-web
-- **Server Side**: https://github.com/programming-hero-web-course2/b10a11-server-side-prioty-web
+- **Client Side**: https://github.com/prioty-web/query-hunt-client
+- **Server Side**: https://github.com/prioty-web/query-hunt-server
